@@ -76,16 +76,6 @@ Future plans: Auto generate full complimentary, triadic, analogous, etc. color s
 	--accent-trans-40: hsla(var(--accent-h), var(--accent-s), var(--accent-l), .4);
 	--accent-trans-20: hsla(var(--accent-h), var(--accent-s), var(--accent-l), .2);
 	--accent-comp: hsl(calc(var(--accent-h) + 180), var(--accent-s), var(--accent-l));
-	--base: hsl(var(--base-h), var(--base-s), var(--base-l));
-	--base-ultra-light: hsl(var(--base-h), var(--base-s), var(--ultra-light));
-	--base-light: hsl(var(--base-h), var(--base-s), var(--light));
-	--base-dark: hsl(var(--base-h), var(--secondary-s), var(--dark));
-	--base-ultra-dark: hsl(var(--base-h), var(--base-s), var(--ultra-dark));
-	--base-trans-80: hsla(var(--base-h), var(--base-s), var(--base-l), .8);
-	--base-trans-60: hsla(var(--base-h), var(--base-s), var(--base-l), .6);
-	--base-trans-40: hsla(var(--base-h), var(--base-s), var(--base-l), .4);
-	--base-trans-20: hsla(var(--base-h), var(--base-s), var(--base-l), .2);
-	--base-comp: hsl(calc(var(--base-h) + 180), var(--base-s), var(--base-l));
 	
 /*** END COLOR SYSTEM ***/
 	
@@ -96,15 +86,23 @@ If you want to base the clamp functions off different viewport variables, you ca
 ***/
 	
 	--vp-min: 32; /* Viewport Min Size in REM */
-	--vp-max: 108; /* Viewport Max Size in REM */
+	--vp-max: 112; /* Viewport Max Size in REM */
 		
 /*** 
 FLUID TEXT SIZE SYSTEM 
 Base text sizes are used to calculate the fluid text and heading styles. Adjust accordingly.
 ***/
 	
-	--base-text-mobile: 1.6; /* Correlates to REM */
-	--base-text-desktop: 1.8; /* Correlates to REM */
+	--base-text-mobile: 1.6;
+	--base-text-desktop: 1.8;
+	--text-adjust-mob-xs: .2; 
+	--text-adjust-mob-m: 1; 
+	--text-adjust-mob-l: 1.2; 
+	--text-adjust-mob-xl: 1.2; 
+	--text-adjust-mob-xxl: 1.4;
+	--text-adjust-desk-l: 1.2;
+	--text-adjust-desk-xl: 1.6;
+	--text-adjust-desk-xxl: 1.8;
 	
 /*** 
 FLUID SPACING SYSTEM 
@@ -122,6 +120,7 @@ The adjustment variables are multipliers of the base size.
 	--space-adjust-desk-l: 1.2;
 	--space-adjust-desk-xl: 1.4;
 	--space-adjust-desk-xxl: 1.8;
+	--space-adjust-section: 2.4;
 }
 
 /***** END ROOT VARIABLES *****/
@@ -131,44 +130,58 @@ The adjustment variables are multipliers of the base size.
 /*** 
 TEXT SIZING SYSTEM
 Nothing here should need to be adjusted.
-***
+***/
 
-:is(.text-m, .text-l, .text-xl, .text-xxl, h1, h2, h3, h4) {
+:is(body, .text-m, .text-l, .text-xl, .text-xxl, h1, h2, h3, h4) {
 	font-size: clamp(var(--clamp-min) * 1rem, calc(var(--clamp-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--clamp-max) - var(--clamp-min)) / (var(--vp-max) - var(--vp-min))))), var(--clamp-max) * 1rem);
 }
 
 /*** 
-HEADING SIZES 
-Leave the global font size settings in Oxygen blank.
+OXYGEN GLOBAL SIZE & SPACING REPLACEMENT
+This area replaces most of the global size & spacing related areas in Oxygen.
 ***/
 
+body {
+	--clamp-min: var(--base-text-mobile);
+	--clamp-max: var(--base-text-desktop);
+}
+
+.ct-section-inner-wrap {
+	--pad-min: calc(var(--base-space) * (var(--space-adjust-mob-l) * var(--space-adjust-section)));
+	--pad-max: calc(var(--base-space) * (var(--space-adjust-desk-l) * var(--space-adjust-section)));
+}
+
+
 h1 {
-	--clamp-min: calc(var(--base-text-mobile) * 1.6);
-	--clamp-max: calc(var(--base-text-desktop) * 2.4);
+	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-xxl));
+	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-xxl));
 }
 h2 {
-	--clamp-min: calc(var(--base-text-mobile) * 1.4);
-	--clamp-max: calc(var(--base-text-desktop) * 2);
+	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-xl));
+	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-xl));
 }
 h3 {
-	--clamp-min: calc(var(--base-text-mobile) * 1.2);
-	--clamp-max: calc(var(--base-text-desktop) * 1.6);
+	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-l));
+	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-l));
 }
 h4 {
-	--clamp-min: calc(var(--base-text-mobile) * 1.15);
-	--clamp-max: calc(var(--base-text-desktop) * 1.2);
+	--clamp-min: var(--base-text-mobile);
+	--clamp-max: var(--base-text-desktop);
 }
 h5 {
-	font-size: calc(var(--base-text-mobile) * 1rem);
+	font-size: calc(var(--base-text-mobile) * var(--text-adjust-mob-m) * 1rem);
 }
 h6 {
-	font-size: calc(var(--base-text-mobile) * 1rem - .2rem);
+	font-size: calc(var(--base-text-mobile) - var(--text-adjust-mob-xs) * 1rem);
 }
 
-/*** TEXT SIZE UTILITY CLASSES ***/
+/*** 
+TEXT CLASSES
+These are generated from the text size system.
+***/
 
 .text-xs {
-	font-size: calc(var(--base-text-mobile) * 1rem - .2rem);
+	font-size: calc(var(--base-text-mobile) * 1rem - var(--text-adjust-mob-xs) * 1rem);
 }
 .text-s {
 	font-size: calc(var(--base-text-mobile) * 1rem);
@@ -178,167 +191,201 @@ h6 {
 	--clamp-max: var(--base-text-desktop);
 }
 .text-l {
-	--clamp-min: calc(var(--base-text-mobile) * 1.15);
-	--clamp-max: calc(var(--base-text-desktop) * 1.15);
+	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-l));
+	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-l));
 }
 .text-xl {
-	--clamp-min: calc(var(--base-text-mobile) * 1.25);
-	--clamp-max: calc(var(--base-text-desktop) * 1.6);
+	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-xl));
+	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-xl));
 }
 .text-xxl {
-	--clamp-min: calc(var(--base-text-mobile) * 1.35);
-	--clamp-max: calc(var(--base-text-desktop) * 1.8);
+	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-xxl));
+	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-xxl));
 }
 
-/*** PADDING UTILITY CLASSES ***/
+/*** 
+PADDING UTILITY CLASSES
+These apply padding to sections and containers.
+***/
 
-:is(.padding-l, .padding-xl, .padding-xxl) {
+:is(.pad--l, .pad--xl, .pad--xxl) {
 	padding: clamp(var(--pad-min) * 1rem, calc(var(--pad-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--pad-max) - var(--pad-min)) / (var(--vp-max) - var(--vp-min))))), var(--pad-max) * 1rem);
 }
-.padding-xs {
+
+:is(.ct-section, .pad-section, .pad-section--l, .pad-section--xl, .pad-section--xxl) .ct-section-inner-wrap {
+	padding: clamp(var(--pad-min) * 1rem, calc(var(--pad-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--pad-max) - var(--pad-min)) / (var(--vp-max) - var(--vp-min))))), var(--pad-max) * 1rem) calc(var(--base-space) * 1rem);
+}
+
+.pad--xs {
 	padding: calc(var(--base-space) * var(--space-adjust-mob-xs) * 1rem);
 }
-.padding-s {
+.pad--s {
 	padding: calc(var(--base-space) * var(--space-adjust-mob-s) * 1rem);
 }
-.padding-m {
+.pad {
 	padding: calc(var(--base-space) * var(--space-adjust-mob-m) * 1rem);
 }
-.padding-l {
+.pad--l {
 	--pad-min: calc(var(--base-space) * var(--space-adjust-mob-l));
 	--pad-max: calc(var(--base-space) * var(--space-adjust-desk-l));
 }
-.padding-xl {
+.pad--xl {
 	--pad-min: calc(var(--base-space) * var(--space-adjust-mob-xl));
 	--pad-max: calc(var(--base-space) * var(--space-adjust-desk-xl));
 }
-.padding-xxl {
+.pad--xxl {
 	--pad-min: calc(var(--base-space) * var(--space-adjust-mob-xxl));
 	--pad-max: calc(var(--base-space) * var(--space-adjust-desk-xxl));
 }
+.pad-section--xs .ct-section-inner-wrap {
+	padding: calc(var(--base-space) * var(--space-adjust-mob-xs) * 1rem) calc(var(--base-space) * 1rem);
+}
+.pad-section--s .ct-section-inner-wrap {
+	padding: calc(var(--base-space) * var(--space-adjust-mob-s) * 1rem) calc(var(--base-space) * 1rem));
+}
+.pad-section .ct-section-inner-wrap {
+	--pad-min: calc(var(--base-space) * (var(--space-adjust-mob-l) * var(--space-adjust-section)));
+	--pad-max: calc(var(--base-space) * (var(--space-adjust-desk-l) * var(--space-adjust-section)));
+}
+.pad-section--l {
+	--pad-min: calc(var(--base-space) * (var(--space-adjust-mob-l) * var(--space-adjust-section)));
+	--pad-max: calc(var(--base-space) * (var(--space-adjust-desk-l) * var(--space-adjust-section)));
+}
+.pad-section--xl {
+	--pad-min: calc(var(--base-space) * (var(--space-adjust-mob-xl) * var(--space-adjust-section)));
+	--pad-max: calc(var(--base-space) * (var(--space-adjust-desk-xl) * var(--space-adjust-section)));
+}
+.pad-section--xxl {
+	--pad-min: calc(var(--base-space) * (var(--space-adjust-mob-xxl) * var(--space-adjust-section)));
+	--pad-max: calc(var(--base-space) * (var(--space-adjust-desk-xxl) * var(--space-adjust-section)));
+}
 
-/*** MARGIN UTILITY CLASSES ***/
+/*** 
+MARGIN UTILITY CLASSES
+These apply margin to elements.
+***/
 
 :is(.margin-bottom-l, .margin-bottom-xl, .margin-bottom-xxl) {
 	margin-bottom: clamp(var(--margin-min) * 1rem, calc(var(--margin-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--margin-max) - var(--margin-min)) / (var(--vp-max) - var(--vp-min))))), var(--margin-max) * 1rem);
 }
-.margin-bottom-xs {
+.margin-bottom--xs {
 	margin-bottom: calc(var(--base-space) * var(--space-adjust-mob-xs) * 1rem);
 }
-.margin-bottom-s {
+.margin-bottom--s {
 	margin-bottom: calc(var(--base-space) * var(--space-adjust-mob-s) * 1rem);
 }
-.margin-bottom-m {
+.margin-bottom {
 	margin-bottom: calc(var(--base-space) * var(--space-adjust-mob-m) * 1rem);
 }
-.margin-bottom-l {
+.margin-bottom--l {
 	--margin-min: calc(var(--base-space) * var(--space-adjust-mob-l));
 	--margin-max: calc(var(--base-space) * var(--space-adjust-desk-l));
 }
-.margin-bottom-xl {
+.margin-bottom--xl {
 	--margin-min: calc(var(--base-space) * var(--space-adjust-mob-xl));
 	--margin-max: calc(var(--base-space) * var(--space-adjust-desk-xl));
 }
-.margin-bottom-xxl {
+.margin-bottom--xxl {
 	--margin-min: calc(var(--base-space) * var(--space-adjust-mob-xxl));
 	--margin-max: calc(var(--base-space) * var(--space-adjust-desk-xxl));
 }
 
+/* 
+OWL SPACING UTILITY CLASSES 
+These apply equal margin to the top of all elements with an adjacent sibling.
+Use these to automatically space everything in a section or container without creating extra top or bottom spacing.
+*/
 
-
-/* OWL SPACING UTILITY CLASSES */
-
-:is(.owl-l, .owl-xl, .owl-xxl) {
-	margin-top: clamp(var(--margin-min) * 1rem, calc(var(--margin-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--margin-max) - var(--margin-min)) / (var(--vp-max) - var(--vp-min))))), var(--margin-max) * 1rem);
+.ct-section.owl--xs .ct-section-inner-wrap > * + *,
+.owl--xs:not(.ct-section) > * + * {
+	margin-top: calc(var(--base-space) * var(--space-adjust-mob-xs) * 1rem);
 }
 
-.ct-section.owl-xs .ct-section-inner-wrap > * + *,
-.owl-xs:not(.ct-section) > * + * {
-	margin-top: calc(var(--base-space) * .5rem);
+.ct-section.owl--s .ct-section-inner-wrap > * + *,
+.owl--s:not(.ct-section) > * + * {
+	margin-top: calc(var(--base-space) * var(--space-adjust-mob-s) * 1rem);
 }
 
-.ct-section.owl-s .ct-section-inner-wrap > * + *,
-.owl-s:not(.ct-section) > * + * {
-	margin-top: calc(var(--base-space) * .75rem);
-}
-
-.ct-section.owl-m .ct-section-inner-wrap > * + *,
-.owl-m:not(.ct-section) > * + * {
+.ct-section.owl .ct-section-inner-wrap > * + *,
+.owl:not(.ct-section) > * + * {
 	margin-top: calc(var(--base-space) * 1rem);
 }
 
-.ct-section.owl-l .ct-section-inner-wrap > * + *,
-.owl-l:not(.ct-section) > * + * {
-	--margin-min: calc(var(--base-space) * 1.15);
-	--margin-max: calc(var(--base-space) * 1.75);
+.ct-section.owl--l .ct-section-inner-wrap > * + *,
+.owl--l:not(.ct-section) > * + * {
+	--margin-min: calc(var(--base-space) * var(--space-adjust-mob-l));
+	--margin-max: calc(var(--base-space) * var(--space-adjust-desk-l));
+	margin-top: clamp(var(--margin-min) * 1rem, calc(var(--margin-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--margin-max) - var(--margin-min)) / (var(--vp-max) - var(--vp-min))))), var(--margin-max) * 1rem);
 }
 
-.ct-section.owl-xl .ct-section-inner-wrap > * + *,
-.owl-xl:not(.ct-section) > * + * {
-	--margin-min: calc(var(--base-space) * 1.25);
-	--margin-max: calc(var(--base-space) * 2);
+.ct-section.owl--xl .ct-section-inner-wrap > * + *,
+.owl--xl:not(.ct-section) > * + * {
+	--margin-min: calc(var(--base-space) * var(--space-adjust-mob-xl));
+	--margin-max: calc(var(--base-space) * var(--space-adjust-desk-xl));
+	margin-top: clamp(var(--margin-min) * 1rem, calc(var(--margin-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--margin-max) - var(--margin-min)) / (var(--vp-max) - var(--vp-min))))), var(--margin-max) * 1rem);
 }
 
-.ct-section.owl-xxl .ct-section-inner-wrap > * + *,
-.owl-xxl:not(.ct-section) > * + * {
-	--margin-min: calc(var(--base-space) * 1.35);
-	--margin-max: calc(var(--base-space) * 3);
+.ct-section.owl--xxl .ct-section-inner-wrap > * + *,
+.owl--xxl:not(.ct-section) > * + * {
+	--margin-min: calc(var(--base-space) * var(--space-adjust-mob-xxl));
+	--margin-max: calc(var(--base-space) * var(--space-adjust-desk-xxl));
+	margin-top: clamp(var(--margin-min) * 1rem, calc(var(--margin-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--margin-max) - var(--margin-min)) / (var(--vp-max) - var(--vp-min))))), var(--margin-max) * 1rem);
 }
 
 /* MAX WIDTH UTILITY CLASSES */
 
-.max-w-xs {
+.max-width--xs {
 	width: 100%;
 	max-width: 32rem;
 }
-.max-w-s {
+.max-width--s {
 	width: 100%;
   	max-width: 48rem;
 }
-.max-w-m {
+.max-width {
 	width: 100%;
- 	 max-width: 64rem;
+ 	max-width: 64rem;
 }
-.max-w-l {
+.max-width--l {
 	width: 100%;
- 	 max-width: 72rem;
+ 	max-width: 72rem;
 }
-.max-w-xl {
+.max-width--xl {
 	width: 100%;
- 	 max-width: 96rem;
+ 	max-width: 96rem;
 }
-.max-w-xxl {
+.max-width--xxl {
 	width: 100%;
  	max-width: 112rem;
 }
-.max-w-full {
-  width: 100%;
-  max-width: 100%;
+.max-width--full {
+  	width: 100%;
+  	max-width: 100%;
 }
 
 /* BREAKOUT UTILITY CLASSES */
 
-.breakout-s {
+.breakout--s {
 	width: 60vw;
 	max-width: 60vw;
 	margin: 0 calc(-30vw + 50%);
 }
-.breakout-m {
+.breakout {
 	width: 70vw;
 	max-width: 70vw;
 	margin: 0 calc(-35vw + 50%);
 }
-.breakout-l {
+.breakout--l {
 	width: 80vw;
 	max-width: 80vw;
 	margin: 0 calc(-40vw + 50%);
 }
-.breakout-xl {
+.breakout--xl {
 	width: 90vw;
 	max-width: 90vw;
 	margin: 0 calc(-45vw + 50%);
 }
-.breakout-full {
+.breakout--full {
 	width: 100vw;
 	max-width: 100vw;
 	margin: 0 calc(-50vw + 50%);
@@ -360,7 +407,7 @@ h6 {
 .sticky-top--s {
 	top: 2.5%;
 }
-.sticky-top--m {
+.sticky-top {
 	top: 5%;
 }
 .sticky-top--l {
@@ -369,28 +416,36 @@ h6 {
 
 /* HEIGHT UTILITY CLASSES */
 
-.height--30 .ct-section-inner-wrap {
+.ct-section.height--30 .ct-section-inner-wrap,
+.height--30:not(.ct-section) {
 	min-height: 30vh;
 }
-.height--40 .ct-section-inner-wrap {
+.ct-section.height--40 .ct-section-inner-wrap,
+.height--40:not(.ct-section) {
 	min-height: 40vh;
 }
-.height--50 .ct-section-inner-wrap {
+.ct-section.height--50 .ct-section-inner-wrap,
+.height--50:not(.ct-section) {
 	min-height: 50vh;
 }
-.height--60 .ct-section-inner-wrap {
+.ct-section.height--60 .ct-section-inner-wrap,
+.height--60:not(.ct-section) {
 	min-height: 60vh;
 }
-.height--70 .ct-section-inner-wrap {
+.ct-section.height--70 .ct-section-inner-wrap,
+.height--70:not(.ct-section) {
 	min-height: 70vh;
 }
-.height--80 .ct-section-inner-wrap {
+.ct-section.height--80 .ct-section-inner-wrap,
+.height--80:not(.ct-section) {
 	min-height: 80vh;
 }
-.height--90 .ct-section-inner-wrap {
+.ct-section.height--90 .ct-section-inner-wrap,
+.height--90:not(.ct-section) {
 	min-height: 90vh;
 }
-.height--100 .ct-section-inner-wrap {
+.ct-section.height--full .ct-section-inner-wrap,
+.height--full:not(.ct-section) {
 	min-height: 100vh;
 }
 
