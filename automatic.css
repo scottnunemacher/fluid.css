@@ -500,4 +500,59 @@ They prevent image stretching and allow control over which area of the image is 
 	object-fit: contain;
 }
 
-/***** END UTILITY CLASSES *****/
+/*** 
+BUTTON UTILITY CLASSES
+These set background color, hover color, text size, and default padding.
+***/
+
+.btn {
+	background: var(--primary);
+	line-height: 1.2;
+	padding: calc(var(--base-space) / (var(--base-space) * .9) * 1em) calc(var(--base-space) / (var(--base-space) * .6) * 1em);
+}
+
+.btn:hover {
+	background: var(--primary-hover);
+}
+
+.btn--secondary {
+	background: var(--secondary);
+}
+
+.btn--secondary:hover {
+	background: var(--secondary-hover);
+}
+
+.btn--accent {
+	background: var(--accent);
+}
+
+.btn--accent:hover {
+	background: var(--accent-hover);
+}
+
+.btn--base {
+	background: var(--base);
+}
+
+.btn--base:hover {
+	background: var(--base-hover);
+}
+
+.btn--xs {
+	font-size: calc(var(--base-text-mobile) * 1rem - var(--text-adjust-mob-xs) * 1rem);
+}
+
+.btn--s {
+	font-size: calc(var(--base-text-mobile) * 1rem);
+}
+
+.btn--l {
+	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-l));
+	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-l));
+}
+
+.btn--xl {
+	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-xl));
+	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-xl));
+}
