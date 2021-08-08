@@ -142,7 +142,7 @@ TEXT SIZING SYSTEM
 Nothing here should need to be adjusted.
 ***/
 
-:is(body, .text-m, .text-l, .text-xl, .text-xxl, h1, h2, h3, h4) {
+:is(body, .text--m, .text--l, .text--xl, .text--xxl, h1, h2, h3, h4) {
 	font-size: clamp(var(--clamp-min) * 1rem, calc(var(--clamp-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--clamp-max) - var(--clamp-min)) / (var(--vp-max) - var(--vp-min))))), var(--clamp-max) * 1rem);
 }
 
@@ -190,25 +190,25 @@ TEXT CLASSES
 These are generated from the text size system.
 ***/
 
-.text-xs {
+.text--xs {
 	font-size: calc(var(--base-text-mobile) * 1rem - var(--text-adjust-mob-xs) * 1rem);
 }
-.text-s {
+.text--s {
 	font-size: calc(var(--base-text-mobile) * 1rem);
 }
-.text-m {
+.text--m {
 	--clamp-min: var(--base-text-mobile);
 	--clamp-max: var(--base-text-desktop);
 }
-.text-l {
+.text--l {
 	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-l));
 	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-l));
 }
-.text-xl {
+.text--xl {
 	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-xl));
 	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-xl));
 }
-.text-xxl {
+.text--xxl {
 	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-xxl));
 	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-xxl));
 }
