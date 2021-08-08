@@ -241,7 +241,7 @@ These apply padding to sections and containers.
 	padding: calc(var(--base-space) * var(--space-adjust-mob-xs) * 1rem) calc(var(--base-space) * 1rem);
 }
 .pad-section--s .ct-section-inner-wrap {
-	padding: calc(var(--base-space) * var(--space-adjust-mob-s) * 1rem) calc(var(--base-space) * 1rem));
+	padding: calc(var(--base-space) * var(--space-adjust-mob-s) * 1rem) calc(var(--base-space) * 1rem);
 }
 .pad-section .ct-section-inner-wrap {
 	--pad-min: calc(var(--base-space) * (var(--space-adjust-mob-l) * var(--space-adjust-section)));
