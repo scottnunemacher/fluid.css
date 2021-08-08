@@ -458,4 +458,41 @@ Change the max-width of any element. Values are generated from base viewport siz
 	min-height: 100vh;
 }
 
+/*** 
+OBJECT-FIT UTILITY CLASSES
+Use these classes when images require a set width and height.
+They prevent image stretching and allow control over which area of the image is shown.
+***/
+
+.object-fit--cover {
+	object-fit: cover;
+}
+.object-fit--center-left {
+	object-position: 10% 50%;
+}
+.object-fit--center-right {
+	object-position: 90% 50%;
+}
+.object-fit--center-top {
+	object-position: 50% 10%;
+}
+.object-fit--center-bottom {
+	object-position: 50% 90%;
+}
+.object-fit--bottom-left {
+	object-position: 10% 10%;
+}
+.object-fit--bottom-right {
+	object-position: 90% 90%;
+}
+.object-fit--top-left {
+	object-position: 10% 90%;
+}
+.object-fit--top-right {
+	object-position: 90% 10%;
+}
+.object-fit--contain {
+	object-fit: contain;
+}
+
 /***** END UTILITY CLASSES *****/
