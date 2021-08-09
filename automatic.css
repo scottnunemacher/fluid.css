@@ -187,7 +187,7 @@ h5 {
 	font-size: calc(var(--base-text-mobile) * var(--text-adjust-mob-m) * 1rem);
 }
 h6 {
-	font-size: calc(var(--base-text-mobile) - var(--text-adjust-mob-xs) * 1rem);
+	font-size: calc((var(--base-text-mobile) - var(--text-adjust-mob-xs)) * 1rem);
 }
 
 /*** 
@@ -280,7 +280,7 @@ MARGIN UTILITY CLASSES
 These apply margin to elements.
 ***/
 
-:is(.margin-bottom-l, .margin-bottom-xl, .margin-bottom-xxl) {
+:is(.margin-bottom--l, .margin-bottom--xl, .margin-bottom--xxl) {
 	margin-bottom: clamp(var(--margin-min) * 1rem, calc(var(--margin-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--margin-max) - var(--margin-min)) / (var(--vp-max) - var(--vp-min))))), var(--margin-max) * 1rem);
 }
 .margin-bottom--xs {
