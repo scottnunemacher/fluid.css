@@ -417,17 +417,178 @@ Quickly apply brand colors to the background.
 	background-color: var(--primary);	
 }
 
+.bg--primary-hover {
+  background-color: var(--primary-hover);
+}
+
+.bg--primary-ultra-light {
+  background-color: var(--primary-ultra-light);
+}
+
+.bg--primary-light {
+  background-color: var(--primary-light);
+}
+
+.bg--primary-dark {
+  background-color: var(--primary-dark);
+}
+
+.bg--primary-ultra-dark {
+  background-color: var(--primary-ultra-dark);
+}
+
+.bg--primary-trans-80 {
+  background-color: var(--primary-trans-80);
+}
+
+.bg--primary-trans-60 {
+  background-color: var(--primary-trans-60);
+}
+
+.bg--primary-trans-40 {
+  background-color: var(--primary-trans-40);
+}
+
+.bg--primary-trans-20 {
+  background-color: var(--primary-trans-20);
+}
+
+.bg--primary-comp {
+  background-color: var(--primary-comp);
+}
+
 .bg--secondary {
 	background-color: var(--secondary);	
+}
+
+.bg--secondary-hover {
+  background-color: var(--secondary-hover);
+}
+
+.bg--secondary-ultra-light {
+  background-color: var(--secondary-ultra-light);
+}
+
+.bg--secondary-light {
+  background-color: var(--secondary-light);
+}
+
+.bg--secondary-dark {
+  background-color: var(--secondary-dark);
+}
+
+.bg--secondary-ultra-dark {
+  background-color: var(--secondary-ultra-dark);
+}
+
+.bg--secondary-trans-80 {
+  background-color: var(--secondary-trans-80);
+}
+
+.bg--secondary-trans-60 {
+  background-color: var(--secondary-trans-60);
+}
+
+.bg--secondary-trans-40 {
+  background-color: var(--secondary-trans-40);
+}
+
+.bg--secondary-trans-20 {
+  background-color: var(--secondary-trans-20);
+}
+
+.bg--secondary-comp {
+  background-color: var(--secondary-comp);
 }
 
 .bg--accent {
 	background-color: var(--accent);	
 }
 
+.bg--accent-hover {
+  background-color: var(--accent-hover);
+}
+
+.bg--accent-ultra-light {
+  background-color: var(--accent-ultra-light);
+}
+
+.bg--accent-light {
+  background-color: var(--accent-light);
+}
+
+.bg--accent-dark {
+  background-color: var(--accent-dark);
+}
+
+.bg--accent-ultra-dark {
+  background-color: var(--accent-ultra-dark);
+}
+
+.bg--accent-trans-80 {
+  background-color: var(--accent-trans-80);
+}
+
+.bg--accent-trans-60 {
+  background-color: var(--accent-trans-60);
+}
+
+.bg--accent-trans-40 {
+  background-color: var(--accent-trans-40);
+}
+
+.bg--accent-trans-20 {
+  background-color: var(--accent-trans-20);
+}
+
+.bg--accent-comp {
+  background-color: var(--accent-comp);
+}
+
 .bg--base {
 	background-color: var(--base);	
 }
+
+.bg--base-hover {
+  background-color: var(--base-hover);
+}
+
+.bg--base-ultra-light {
+  background-color: var(--base-ultra-light);
+}
+
+.bg--base-light {
+  background-color: var(--base-light);
+}
+
+.bg--base-dark {
+  background-color: var(--base-dark);
+}
+
+.bg--base-ultra-dark {
+  background-color: var(--base-ultra-dark);
+}
+
+.bg--base-trans-80 {
+  background-color: var(--base-trans-80);
+}
+
+.bg--base-trans-60 {
+  background-color: var(--base-trans-60);
+}
+
+.bg--base-trans-40 {
+  background-color: var(--base-trans-40);
+}
+
+.bg--base-trans-20 {
+  background-color: var(--base-trans-20);
+}
+
+.bg--base-comp {
+  background-color: var(--base-comp);
+}
+
 
 /*** 
 OVERLAY CLASSES
