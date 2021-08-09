@@ -28,6 +28,10 @@ Set the global colors below using HSL variables.
 	--base-h: 357.2;
 	--base-s: 70.5%;
 	--base-l: 47.8%;
+	
+	--shade-h: 0; 
+	--shade-s: 0%;
+	--shade-l: 0%;
 
 /* 
 SHADING VARIABLES
@@ -91,6 +95,17 @@ Future plans: Auto generate full complimentary, triadic, analogous, etc. color s
 	--base-trans-40: hsla(var(--base-h), var(--base-s), var(--base-l), .4);
 	--base-trans-20: hsla(var(--base-h), var(--base-s), var(--base-l), .2);
 	--base-comp: hsl(calc(var(--base-h) + 180), var(--base-s), var(--base-l));
+	--shade-black: hsl(var(--shade-h), var(--shade-s), var(--shade-l));
+	--shade-white: hsl(var(--shade-h), var(--shade-s), 100%);
+	--shade-ultra-light: hsl(var(--shade-h), var(--shade-s), 95%);
+	--shade-light: hsl(var(--shade-h), var(--shade-s), 85%);
+	--shade-medium: hsl(var(--shade-h), var(--shade-s), 50%);
+	--shade-dark: hsl(var(--shade-h), var(--shade-s), 20%);
+	--shade-ultra-dark: hsl(var(--shade-h), var(--shade-s), 10%);
+	--black-trans-80: hsla(var(--shade-h), var(--shade-s), var(--shade-l), .8);
+	--black-trans-60: hsla(var(--shade-h), var(--shade-s), var(--shade-l), .6);
+	--black-trans-40: hsla(var(--shade-h), var(--shade-s), var(--shade-l), .4);
+	--black-trans-20: hsla(var(--shade-h), var(--shade-s), var(--shade-l), .2);
 	
 /*** END COLOR SYSTEM ***/
 	
@@ -434,7 +449,11 @@ Quickly apply brand color overlays.
 .overlay--base-trans-80,
 .overlay--base-trans-60,
 .overlay--base-trans-40,
-.overlay--base-trans-20
+.overlay--base-trans-20,
+.overlay--black-trans-80,
+.overlay--black-trans-60,
+.overlay--black-trans-40,
+.overlay--black-trans-20
 {
 	position: relative;
 	z-index: 0;
@@ -455,7 +474,11 @@ Quickly apply brand color overlays.
 .overlay--base-trans-80::before,
 .overlay--base-trans-60::before,
 .overlay--base-trans-40::before,
-.overlay--base-trans-20::before
+.overlay--base-trans-20::before,
+.overlay--black-trans-80::before,
+.overlay--black-trans-60::before,
+.overlay--black-trans-40::before,
+.overlay--black-trans-20::before
 {
 	content: '';
 	position: absolute;
@@ -513,6 +536,18 @@ Quickly apply brand color overlays.
 }
 .overlay--base-trans-20::before {
 	background: var(--base-trans-20);
+}
+.overlay--black-trans-80::before {
+	background: var(--black-trans-80);
+}
+.overlay--black-trans-60::before {
+	background: var(--black-trans-60);
+}
+.overlay--black-trans-40::before {
+	background: var(--black-trans-40);
+}
+.overlay--black-trans-20::before {
+	background: var(--black-trans-20);
 }
 
 /* BREAKOUT UTILITY CLASSES
