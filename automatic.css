@@ -218,6 +218,22 @@ These are generated from the text size system.
 	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-xxl));
 }
 
+.text--primary {
+	color: var(--primary);	
+}
+
+.text--secondary {
+	color: var(--secondary);	
+}
+
+.text--accent {
+	color: var(--accent);	
+}
+
+.text--base {
+	color: var(--base);	
+}
+
 /*** 
 PADDING UTILITY CLASSES
 These apply padding to sections and containers.
@@ -377,7 +393,131 @@ Change the max-width of any element. Values are generated from base viewport siz
   	max-width: calc(var(--vp-max) * 1rem);
 }
 
-/* BREAKOUT UTILITY CLASSES */
+/*** 
+BACKGROUND CLASSES
+Quickly apply brand colors to the background.
+***/
+
+.bg--primary {
+	background-color: var(--primary);	
+}
+
+.bg--secondary {
+	background-color: var(--secondary);	
+}
+
+.bg--accent {
+	background-color: var(--accent);	
+}
+
+.bg--base {
+	background-color: var(--base);	
+}
+
+/*** 
+OVERLAY CLASSES
+Quickly apply brand color overlays.
+***/
+
+.overlay--primary-trans-80,
+.overlay--primary-trans-60,
+.overlay--primary-trans-40,
+.overlay--primary-trans-20,
+.overlay--secondary-trans-80,
+.overlay--secondary-trans-60,
+.overlay--secondary-trans-40,
+.overlay--secondary-trans-20,
+.overlay--accent-trans-80,
+.overlay--accent-trans-60,
+.overlay--accent-trans-40,
+.overlay--accent-trans-20,
+.overlay--base-trans-80,
+.overlay--base-trans-60,
+.overlay--base-trans-40,
+.overlay--base-trans-20
+{
+	position: relative;
+	z-index: 0;
+}
+
+.overlay--primary-trans-80::before,
+.overlay--primary-trans-60::before,
+.overlay--primary-trans-40::before,
+.overlay--primary-trans-20::before,
+.overlay--secondary-trans-80::before,
+.overlay--secondary-trans-60::before,
+.overlay--secondary-trans-40::before,
+.overlay--secondary-trans-20::before,
+.overlay--accent-trans-80::before,
+.overlay--accent-trans-60::before,
+.overlay--accent-trans-40::before,
+.overlay--accent-trans-20::before,
+.overlay--base-trans-80::before,
+.overlay--base-trans-60::before,
+.overlay--base-trans-40::before,
+.overlay--base-trans-20::before
+{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+}
+
+.overlay--primary-trans-80::before {
+	background: var(--primary-trans-80);
+}
+.overlay--primary-trans-60::before {
+	background: var(--primary-trans-60);
+}
+.overlay--primary-trans-40::before {
+	background: var(--primary-trans-40);
+}
+.overlay--primary-trans-20::before {
+	background: var(--primary-trans-20);
+}
+.overlay--secondary-trans-80::before {
+	background: var(--secondary-trans-80);
+}
+.overlay--secondary-trans-60::before {
+	background: var(--secondary-trans-60);
+}
+.overlay--secondary-trans-40::before {
+	background: var(--secondary-trans-40);
+}
+.overlay--secondary-trans-20::before {
+	background: var(--secondary-trans-20);
+}
+.overlay--accent-trans-80::before {
+	background: var(--accent-trans-80);
+}
+.overlay--accent-trans-60::before {
+	background: var(--accent-trans-60);
+}
+.overlay--accent-trans-40::before {
+	background: var(--accent-trans-40);
+}
+.overlay--accent-trans-20::before {
+	background: var(--accent-trans-20);
+}
+.overlay--base-trans-80::before {
+	background: var(--base-trans-80);
+}
+.overlay--base-trans-60::before {
+	background: var(--base-trans-60);
+}
+.overlay--base-trans-40::before {
+	background: var(--base-trans-40);
+}
+.overlay--base-trans-20::before {
+	background: var(--base-trans-20);
+}
+
+/* BREAKOUT UTILITY CLASSES
+Horizontally break any element out of its parent container.
+*/
 
 .breakout--s {
 	width: 60vw;
