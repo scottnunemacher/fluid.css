@@ -922,3 +922,30 @@ These set background color, hover color, text size, and default padding.
 	--clamp-min: calc(var(--base-text-mobile) * var(--text-adjust-mob-xl));
 	--clamp-max: calc(var(--base-text-desktop) * var(--text-adjust-desk-xl));
 }
+
+/*** 
+ROUNDED UTILITY CLASSES
+These control the border radius of elements
+***/
+
+.rounded--xs {
+	border-radius: .4rem;
+}
+.rounded--s {
+	border-radius: .8rem;
+}
+.rounded--m {
+	border-radius: 1.2rem;
+}
+.rounded--l {
+	border-radius: 1.8rem;
+}
+.rounded--xl {
+	border-radius: 2.4rem;
+}
+.rounded--xxl {
+	border-radius: 3.2rem;
+}
+.rounded--circle {
+	border-radius: 50%;
+}
