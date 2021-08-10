@@ -379,6 +379,54 @@ Use these to automatically space everything in a section or container without cr
 }
 
 /* 
+CARD UTILITY CLASSES
+Default cards that pad and space content automatically.
+*/
+
+:is(.card--l, .card--xl, .card--xxl) {
+	padding: clamp(var(--pad-min) * .6em, calc(var(--pad-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--pad-max) - var(--pad-min)) / (var(--vp-max) - var(--vp-min))))), var(--pad-max) * .6em);
+}
+.card--xs {
+	padding: calc((var(--base-space) * var(--space-adjust-mob-xs)) * .6em);
+}
+.card--s {
+	padding: calc((var(--base-space) * var(--space-adjust-mob-s)) * .6em);
+}
+.card--m {
+	padding: calc((var(--base-space) * var(--space-adjust-mob-m)) * .6em);
+}
+.card--l {
+	--pad-min: calc(var(--base-space) * var(--space-adjust-mob-l));
+	--pad-max: calc(var(--base-space) * var(--space-adjust-desk-l));
+}
+.card--xl {
+	--pad-min: calc(var(--base-space) * var(--space-adjust-mob-xl));
+	--pad-max: calc(var(--base-space) * var(--space-adjust-desk-xl));
+}
+.card--xxl {
+	--pad-min: calc(var(--base-space) * var(--space-adjust-mob-xxl));
+	--pad-max: calc(var(--base-space) * var(--space-adjust-desk-xxl));
+}
+.owl-card--s {
+	padding: calc((var(--base-space) * var(--space-adjust-mob-xs)) * .8em);
+}
+.owl-card--s > * + * {
+	margin-top: calc((var(--base-space) * var(--space-adjust-mob-xs)) * .4em);
+}
+.owl-card--m {
+	padding: calc((var(--base-space) * var(--space-adjust-mob-xs)) * 1em);
+}
+.owl-card--m > * + * {
+	margin-top: calc((var(--base-space) * var(--space-adjust-mob-xs)) * .6em);
+}
+.owl-card--l {
+	padding: calc((var(--base-space) * var(--space-adjust-mob-s)) * 1em);
+}
+.owl-card--l > * + * {
+	margin-top: calc((var(--base-space) * var(--space-adjust-mob-s)) * .6em);
+}
+
+/* 
 MAX WIDTH UTILITY CLASSES
 Change the max-width of any element. Values are generated from base viewport sizes so they adapt to viewport defaults.
 */
