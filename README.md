@@ -1,4 +1,4 @@
-# Automatic.css
-A fluid CSS style system originally designed for Oxygen websites.
+# fluid.css
+A fluid CSS system.
 
-Warning: This is currently a rapidly evolving pre-production system. It's currently available for testing and refinement. Do not use in-full on production websites.
+__NOTE__: This is for design and testing only. Not for use in production websites.
